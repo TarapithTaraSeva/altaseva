@@ -94,7 +94,7 @@
 
         <section id="addressSection" class="bg-white rounded-2xl shadow p-5 mb-4">
             <h4 class="text-lg font-semibold mb-2" data-lang-key="addressSectionTitle">আপনার তথ্য</h4>
-            <p class="text-sm text-slate-600 mb-2" data-lang-key="addressSectionSubtitle">এই সেবার জন্য ঠিকানা ঐচ্ছিক, কারণ কোনো ডেলিভারি হবে না।</p>
+            <p class="text-sm text-slate-600 mb-2" data-lang-key="addressSectionSubtitle">এই সেবার জন্য ঠিকানা ঐচ্ছিক ।</p>
             <div class="space-y-3">
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1" for="nameField" data-lang-key="fullNameLabel" data-is-mandatory="true">আপনার পুরো নাম</label>
@@ -213,13 +213,13 @@
                 nameInputPlaceholder: "পুরো নাম লিখুন", gotraInputPlaceholder: "গোত্র লিখুন (যদি নেই ফাঁকা রাখুন)",
                 addMoreBtnText: "আরও নাম যুক্ত করুন",
                 addressSectionTitle: "আপনার তথ্য",
-                addressSectionSubtitle: "এই সেবার জন্য ঠিকানা ঐচ্ছিক, কারণ কোনো ডেলিভারি হবে না। শুধু নাম ও হোয়াটসঅ্যাপ আবশ্যক।",
-                fullNameLabel: "আপনার পুরো নাম", contactLabel: "যোগাযোগের ফোন নম্বর (ঐচ্ছিক)", emailLabel: "ইমেইল আইডি (ঐচ্ছিক)",
-                villTownLabel: "গ্রাম/শহর (ঐচ্ছিক)", roadLaneLabel: "রাস্তা/লেন (ঐচ্ছিক)", landmarkLabel: "ল্যান্ডমার্ক (ঐচ্ছিক)",
-                districtLabel: "জেলা (ঐচ্ছিক)", stateLabel: "রাজ্য (ঐচ্ছিক)", pinCodeLabel: "পিন কোড (ঐচ্ছিক)", whatsappLabel: "আপনার হোয়াটসঅ্যাপ নম্বর লিখুন",
-                namePlaceholder: "নাম", phonePlaceholder: "ঐচ্ছিক", emailPlaceholder: "ঐচ্ছিক", villTownPlaceholder: "ঐচ্ছিক", roadLanePlaceholder: "ঐচ্ছিক", landmarkPlaceholder: "ঐচ্ছিক", districtPlaceholder: "ঐচ্ছিক", selectStatePlaceholder: "-- রাজ্য নির্বাচন করুন (ঐচ্ছিক) --", pinCodePlaceholder: "ঐচ্ছিক",
+                addressSectionSubtitle: "এই সেবার জন্য ঠিকানা ঐচ্ছিক, শুধু নাম ও হোয়াটসঅ্যাপ নম্বর আবশ্যক।",
+                fullNameLabel: "আপনার পুরো নাম", contactLabel: "যোগাযোগের ফোন নম্বর ", emailLabel: "ইমেইল আইডি ",
+                villTownLabel: "গ্রাম/শহর ", roadLaneLabel: "রাস্তা/লেন ", landmarkLabel: "ল্যান্ডমার্ক ",
+                districtLabel: "জেলা", stateLabel: "রাজ্য ", pinCodeLabel: "পিন কোড ", whatsappLabel: "আপনার হোয়াটসঅ্যাপ নম্বর লিখুন",
+                namePlaceholder: "নাম", phonePlaceholder: "আপনার ফোন নম্বর লিখুন", emailPlaceholder: "আপনার ইমেইল", villTownPlaceholder: "গ্রাম/শহর", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "--", selectStatePlaceholder: "-- রাজ্য নির্বাচন করুন  --", pinCodePlaceholder: "আপনার  পিন লিখুন",
                 whatsappPlaceholder: "১০ অঙ্কের হোয়াটসঅ্যাপ নম্বর দিন",
-                paymentIntro: "সমস্ত আবশ্যক তথ্য পূরণ করার পরে নিচে পেমেন্ট করে আলতা সেবা পাঠান।", payButton: "পেমেন্ট করুন ও আলতা সেবা সম্পূর্ণ করুন",
+                paymentIntro: "সমস্ত তথ্য পূরণ করার পরে নিচে পেমেন্ট করে আলতা সেবা পুজো নিবেদন করুন।", payButton: "পেমেন্ট  করে পুজো নিবেদন সম্পূর্ণ করুন",
                 confirmMsg: (pujaTitle, amount) => `আপনি '${pujaTitle}' (₹${amount}) এর জন্য পেমেন্ট করতে যাচ্ছেন।`,
                 successMsg: "আপনার আলতা সেবা সফলভাবে গৃহীত হয়েছে। ",
                 paymentFailedMsg: "পেমেন্ট বাতিল বা ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
@@ -245,11 +245,11 @@
                 selectedBadge: "चयनित", pujaPriceText: "मूल्य:", membersSectionTitle: "अपने नाम और गोत्र लिखें",
                 membersSectionSubtitle: "आप 5 लोगों तक के नाम और गोत्र लिख सकते हैं (कम से कम एक आवश्यक)",
                 nameInputPlaceholder: "पूरा नाम लिखें", gotraInputPlaceholder: "गोत्र लिखें", addMoreBtnText: "और नाम जोड़ें",
-                addressSectionTitle: "आपकी जानकारी", addressSectionSubtitle: "इस सेवा के लिए पता वैकल्पिक है, कोई डिलीवरी नहीं होगी।",
-                fullNameLabel: "आपका पूरा नाम", contactLabel: "संपर्क नंबर (वैकल्पिक)", emailLabel: "ईमेल आईडी (वैकल्पिक)",
-                villTownLabel: "गाँव/शहर (वैकल्पिक)", roadLaneLabel: "सड़क/गली (वैकल्पिक)", landmarkLabel: "लैंडमार्क (वैकल्पिक)",
-                districtLabel: "जिला (वैकल्पिक)", stateLabel: "राज्य (वैकल्पिक)", pinCodeLabel: "पिन कोड (वैकल्पिक)", whatsappLabel: "अपना व्हाट्सएप नंबर लिखें",
-                namePlaceholder: "नाम", phonePlaceholder: "वैकल्पिक", emailPlaceholder: "वैकल्पिक", villTownPlaceholder: "वैकल्पिक", roadLanePlaceholder: "वैकल्पिक", landmarkPlaceholder: "वैकल्पिक", districtPlaceholder: "वैकल्पिक", selectStatePlaceholder: "-- राज्य चुनें (वैकल्पिक) --", pinCodePlaceholder: "वैकल्पिक", whatsappPlaceholder: "10 अंकों का व्हाट्सएप नंबर दर्ज करें",
+                addressSectionTitle: "आपकी जानकारी", addressSectionSubtitle: "इस सेवा के लिए पता वैकल्पिक है ।",
+                fullNameLabel: "आपका पूरा नाम", contactLabel: "संपर्क नंबर ", emailLabel: "ईमेल आईडी ",
+                villTownLabel: "गाँव/शहर ", roadLaneLabel: "सड़क/गली ", landmarkLabel: "लैंडमार्क ",
+                districtLabel: "जिला ", stateLabel: "राज्य ", pinCodeLabel: "पिन कोड ", whatsappLabel: "अपना व्हाट्सएप नंबर लिखें",
+                namePlaceholder: "नाम", phonePlaceholder: "--", emailPlaceholder: "--", villTownPlaceholder: "--", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "--", selectStatePlaceholder: "-- राज्य चुनें  --", pinCodePlaceholder: "--", whatsappPlaceholder: "10 अंकों का व्हाट्सएप नंबर दर्ज करें",
                 paymentIntro: "जानकारी भरने के बाद नीचे भुगतान करके अलता सेवा भेजें।", payButton: "भुगतान करें और सेवा पूरी करें",
                 confirmMsg: (pujaTitle, amount) => `आप '${pujaTitle}' (₹${amount}) के लिए भुगतान करने जा रहे हैं।`,
                 successMsg: "आपकी अलता सेवा सफलतापूर्वक प्राप्त हुई है।", paymentFailedMsg: "भुगतान रद्द या असफल हो गया।",
@@ -266,12 +266,12 @@
                 selectedBadge: "Selected", pujaPriceText: "Price:", membersSectionTitle: "Enter Names & Gotras",
                 membersSectionSubtitle: "You can enter up to 5 names (at least one required)",
                 nameInputPlaceholder: "Enter Full Name", gotraInputPlaceholder: "Enter Gotra", addMoreBtnText: "Add More Name",
-                addressSectionTitle: "Your Information", addressSectionSubtitle: "Address is optional for this seva, as no delivery will be made. Only name and WhatsApp are required.",
-                fullNameLabel: "Your Full Name", contactLabel: "Contact Number (Optional)", emailLabel: "Email ID (Optional)",
-                villTownLabel: "Village/City (Optional)", roadLaneLabel: "Road/Lane (Optional)", landmarkLabel: "Landmark (Optional)",
-                districtLabel: "District (Optional)", stateLabel: "State (Optional)", pinCodeLabel: "Pin Code (Optional)", whatsappLabel: "Enter Your WhatsApp Number",
-                namePlaceholder: "Name", phonePlaceholder: "Optional", emailPlaceholder: "Optional", villTownPlaceholder: "Optional", roadLanePlaceholder: "Optional", landmarkPlaceholder: "Optional", districtPlaceholder: "Optional", selectStatePlaceholder: "-- Select State (Optional) --", pinCodePlaceholder: "Optional", whatsappPlaceholder: "Enter 10-digit WhatsApp number",
-                paymentIntro: "After filling required details, make payment below for Alta Seva.", payButton: "Pay & Complete Alta Seva",
+                addressSectionTitle: "Your Information", addressSectionSubtitle: "Address is Optional for this seva, Only name and WhatsApp Number are required.",
+                fullNameLabel: "Your Full Name", contactLabel: "Contact Number ", emailLabel: "Email ID ",
+                villTownLabel: "Village/City ", roadLaneLabel: "Road/Lane ", landmarkLabel: "Landmark ",
+                districtLabel: "District ", stateLabel: "State ", pinCodeLabel: "Pin Code ", whatsappLabel: "Enter Your WhatsApp Number",
+                namePlaceholder: "Name", phonePlaceholder: "", emailPlaceholder: "--", villTownPlaceholder: "--", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "-", selectStatePlaceholder: "-- Select State (--) --", pinCodePlaceholder: "--", whatsappPlaceholder: "Enter 10-digit WhatsApp number",
+                paymentIntro: "After filling details, make payment below for Alta Seva puja nivedan.", payButton: "Pay & Complete Puja Nivedan",
                 confirmMsg: (pujaTitle, amount) => `You are about to pay ₹${amount} for '${pujaTitle}'.`,
                 successMsg: "Your Alta Seva has been received successfully.", paymentFailedMsg: "Payment cancelled or failed.",
                 paymentPopupLoading: "Razorpay popup loading...", googleSheetError: "Payment failed due to technical issue.", unknownError: "Payment error.",
@@ -512,7 +512,7 @@
             if (!formData.members || formData.members.length === 0) { showCustomAlert(translations[currentLang].validationMinMembers); return; }
             if (!formData.name) { showCustomAlert(translations[currentLang].validationFullName); return; }
             const whatsappNo = formData.whatsapp;
-            if (!whatsappNo ||!isValidIndianMobile(whatsappNo)) { showCustomAlert(translations[currentLang].whatsappError || "সঠিক হোয়াটসঅ্যাপ নম্বর দিন"); return; }
+            if (!whatsappNo ||!isValidIndianMobile(whatsappNo)) { showCustomAlert(translations[currentLang].whatsappError || "Write Whatsapp Number"); return; }
             const confirmMsg = translations[currentLang].confirmMsg(translations[currentLang].pujaDetailsContent[formData.pujaKey].title, formData.amountINR);
             showCustomConfirm(confirmMsg, async (isConfirmed) => {
                 if (!isConfirmed) return;
