@@ -305,6 +305,8 @@
         const whatsappField = document.getElementById('whatsappField');
         const paymentArea = document.getElementById('paymentArea');
         const payBtn = document.getElementById('payBtn');
+			let isPaymentInProgress = false;
+			let originalPayBtnHTML = "";
         const messageArea = document.getElementById('messageArea');
 
         const customAlertModal = document.getElementById('customAlertModal');
@@ -479,56 +481,84 @@
                 return true;
             } catch (err) { console.error('Google Sheet POST error:', err); return false; }
         }
-        async function openRazorpayCheckout(formData) {
-            const currentLang = langSelect.value;
-            const amountPaise = formData.amountINR * 100;
-            const options = {
-                key: RAZORPAY_KEY, amount: amountPaise, currency: "INR",
-                name: translations[currentLang].headerTitle,
-                description: translations[currentLang].pujaDetailsContent[formData.pujaKey].title,
-                prefill: { name: formData.name, email: formData.email || "", contact: formData.whatsapp? "+91" + formData.whatsapp : "" },
-                notes: { puja: formData.pujaTitle, name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp },
-                theme: { color: "#c2410c" },
-                handler: async function (response) {
-                    showMessage(translations[currentLang].successMsg, "success");
-                    const payload = { status: "success", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: response.razorpay_payment_id || "", razorpay_signature: response.razorpay_signature || "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
-                    await postToGoogleSheet(payload);
-                },
-                modal: {
-                    ondismiss: async function () {
-                        showCustomAlert(translations[currentLang].paymentFailedMsg);
-                        const payload = { status: "failed", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: "", razorpay_error: "user_dismissed_or_failed", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
-                        await postToGoogleSheet(payload);
-                    }
-                }
-            };
-            const rzp = new Razorpay(options); rzp.open();
+        
+		async function openRazorpayCheckout(formData) {
+    const currentLang = langSelect.value;
+    const amountPaise = formData.amountINR * 100;
+    function resetPayBtn() {
+        if(typeof hideRzpLoader === 'function') hideRzpLoader();
+        isPaymentInProgress = false;
+        payBtn.disabled = false;
+        payBtn.style.opacity = "1";
+        payBtn.style.pointerEvents = "auto";
+        if(originalPayBtnHTML) payBtn.innerHTML = originalPayBtnHTML;
+    }
+    const options = {
+        key: RAZORPAY_KEY, amount: amountPaise, currency: "INR",
+        name: translations[currentLang].headerTitle,
+        description: translations[currentLang].pujaDetailsContent[formData.pujaKey].title,
+        prefill: { name: formData.name, email: formData.email || "", contact: formData.whatsapp? "+91" + formData.whatsapp : "" },
+        notes: { puja: formData.pujaTitle, name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp },
+        theme: { color: "#c2410c" },
+        handler: async function (response) {
+            showMessage(translations[currentLang].successMsg, "success");
+            const payload = { status: "success", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: response.razorpay_payment_id || "", razorpay_signature: response.razorpay_signature || "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
+            await postToGoogleSheet(payload);
+            resetPayBtn();
+        },
+        modal: {
+            ondismiss: async function () {
+                showCustomAlert(translations[currentLang].paymentFailedMsg);
+                const payload = { status: "failed", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: "", razorpay_error: "user_dismissed_or_failed", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
+                await postToGoogleSheet(payload);
+                resetPayBtn();
+            }
         }
+    };
+    const rzp = new Razorpay(options); rzp.open();
+}
+		
+        
 
         payBtn.addEventListener('click', async () => {
-            const currentLang = langSelect.value;
-            clearMessage();
-            const formData = collectFormData();
-            if (!formData.members || formData.members.length === 0) { showCustomAlert(translations[currentLang].validationMinMembers); return; }
-            if (!formData.name) { showCustomAlert(translations[currentLang].validationFullName); return; }
-            const whatsappNo = formData.whatsapp;
-            if (!whatsappNo ||!isValidIndianMobile(whatsappNo)) { showCustomAlert(translations[currentLang].whatsappError || "Write Whatsapp Number"); return; }
-            const confirmMsg = translations[currentLang].confirmMsg(translations[currentLang].pujaDetailsContent[formData.pujaKey].title, formData.amountINR);
-            showCustomConfirm(confirmMsg, async (isConfirmed) => {
-                if (!isConfirmed) return;
-                try {
-                    await postToGoogleSheet({ status: "initiated", puja: translations['bn'].pujaDetailsContent[formData.pujaKey].title, amount: formData.amountINR, payment_id: "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() });
-                } catch (e) { console.error("Initial save failed", e); }
-                showMessage(translations[currentLang].paymentPopupLoading, "info");
-                try { await openRazorpayCheckout(formData); }
-                catch (err) {
-                    console.error('Razorpay error:', err);
-                    showCustomAlert(translations[currentLang].unknownError);
-                    const payload = { status: "failed", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: "", razorpay_error: err && err.message? err.message : "unknown_error", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
-                    await postToGoogleSheet(payload);
-                }
-            });
-        });
+    if(isPaymentInProgress) return;
+    const currentLang = langSelect.value;
+    clearMessage();
+    const formData = collectFormData();
+    if (!formData.members || formData.members.length === 0) { showCustomAlert(translations[currentLang].validationMinMembers); return; }
+    if (!formData.name) { showCustomAlert(translations[currentLang].validationFullName); return; }
+    const whatsappNo = formData.whatsapp;
+    if (!whatsappNo ||!isValidIndianMobile(whatsappNo)) { showCustomAlert(translations[currentLang].whatsappError || "সঠিক হোয়াটসঅ্যাপ নম্বর দিন"); return; }
+    const confirmMsg = translations[currentLang].confirmMsg(translations[currentLang].pujaDetailsContent[formData.pujaKey].title, formData.amountINR);
+    showCustomConfirm(confirmMsg, async (isConfirmed) => {
+        if (!isConfirmed) return;
+        if(isPaymentInProgress) return;
+        isPaymentInProgress = true;
+        originalPayBtnHTML = payBtn.innerHTML;
+        payBtn.disabled = true;
+        payBtn.style.opacity = "0.6";
+        payBtn.style.pointerEvents = "none";
+        payBtn.innerHTML = "Razorpay লোড হচ্ছে...";
+        if(typeof showRzpLoader === 'function') showRzpLoader();
+        try {
+            await postToGoogleSheet({ status: "initiated", puja: translations['bn'].pujaDetailsContent[formData.pujaKey].title, amount: formData.amountINR, payment_id: "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() });
+        } catch (e) { console.error("Initial save failed", e); }
+        showMessage(translations[currentLang].paymentPopupLoading, "info");
+        try { await openRazorpayCheckout(formData); }
+        catch (err) {
+            console.error('Razorpay error:', err);
+            if(typeof hideRzpLoader === 'function') hideRzpLoader();
+            isPaymentInProgress = false;
+            payBtn.disabled = false;
+            payBtn.style.opacity = "1";
+            payBtn.style.pointerEvents = "auto";
+            payBtn.innerHTML = originalPayBtnHTML;
+            showCustomAlert(translations[currentLang].unknownError);
+            const payload = { status: "failed", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: "", razorpay_error: err && err.message? err.message : "unknown_error", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
+            await postToGoogleSheet(payload);
+        }
+    });
+});
 
         const policyData = {
             terms: `<p>Welcome to Tara Seva.</p><p>Tara Seva provides online booking for Alta Seva at Tarapith.</p><p>By using this website and making payment, you agree to these Terms.</p>`,
@@ -552,5 +582,29 @@
 		</a>
 		<div style="margin-top:6px;background:white;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;color:#333;box-shadow:0 2px 8px rgba(0,0,0,0.2);white-space:nowrap;font-family:Arial,sans-serif;">Chat on WhatsApp</div>
 	</div>
+		<!-- Razorpay Full Screen Loader -->
+		<style>
+			#rzp-loader-overlay{
+			position:fixed;top:0;left:0;right:0;bottom:0;
+			background:rgba(0,0,0,0.65);z-index:20000;
+			display:none;align-items:center;justify-content:center;flex-direction:column;
+			}
+			.rzp-spinner{
+				width:52px;height:52px;border:5px solid #fff;
+				border-top:5px solid #f59e0b;border-radius:50%;
+				animation:rzpSpin 1s linear infinite;
+			}
+				@keyframes rzpSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+				.rzp-loader-text{color:#fff;margin-top:14px;font-size:15px;font-weight:600;font-family:Arial,sans-serif;text-align:center;padding:0 20px;line-height:1.5;}
+		</style>
+		<div id="rzp-loader-overlay">
+			<div class="rzp-spinner"></div>
+			<div class="rzp-loader-text">Razorpay Loading, Please Wait...<br><span style="font-size:13px;font-weight:400;">Please do not go back or refresh.</span></div>
+		</div>
+		<script>
+			function showRzpLoader(){ document.getElementById('rzp-loader-overlay').style.display='flex'; }
+			function hideRzpLoader(){ document.getElementById('rzp-loader-overlay').style.display='none'; }
+		</script>
+	
 </body>
 </html>
