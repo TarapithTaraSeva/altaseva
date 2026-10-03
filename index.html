@@ -501,11 +501,11 @@
         notes: { puja: formData.pujaTitle, name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp },
         theme: { color: "#c2410c" },
         handler: async function (response) {
-            showMessage(translations[currentLang].successMsg, "success");
-            const payload = { status: "success", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: response.razorpay_payment_id || "", razorpay_signature: response.razorpay_signature || "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
-            await postToGoogleSheet(payload);
-            resetPayBtn();
-        },
+			const payload = { status: "success", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: response.razorpay_payment_id || "", razorpay_signature: response.razorpay_signature || "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
+			await postToGoogleSheet(payload);
+			resetPayBtn();
+			showSuccessPopup(formData, response.razorpay_payment_id || "");
+		},
         modal: {
             ondismiss: async function () {
                 showCustomAlert(translations[currentLang].paymentFailedMsg);
