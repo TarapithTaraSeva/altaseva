@@ -605,6 +605,54 @@
 			function showRzpLoader(){ document.getElementById('rzp-loader-overlay').style.display='flex'; }
 			function hideRzpLoader(){ document.getElementById('rzp-loader-overlay').style.display='none'; }
 		</script>
-	
+		
+		<!-- Success Popup - Lightweight -->
+		<style>
+				#success-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:30000;display:none;align-items:center;justify-content:center;padding:20px;}
+				#success-card{background:#fff;border-radius:16px;max-width:380px;width:100%;padding:28px 22px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.3);animation:popIn 0.3s ease;font-family:Arial,sans-serif;}
+				@keyframes popIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+				.success-tick{width:72px;height:72px;background:#16a34a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:38px;color:#fff;}
+				#success-card h2{font-size:20px;font-weight:800;color:#166534;margin:0 0 8px;}
+				#success-card p{font-size:14px;color:#475569;margin:0 0 14px;line-height:1.5;}
+				.success-info{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px;font-size:13px;color:#334155;text-align:left;margin-bottom:16px;line-height:1.6;}
+				#success-ok-btn{width:100%;background:#16a34a;color:#fff;border:none;padding:12px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;}
+		</style>
+
+		<div id="success-modal">
+			<div id="success-card">
+				<div class="success-tick">✓</div>
+				<h2 id="success-title">জয় মা তারা!</h2>
+				<p id="success-desc">আপনার আলতা সেবা সফলভাবে গৃহীত হয়েছে।</p>
+				<div class="success-info">
+					নাম: <b><span id="success-name">-</span></b><br>
+					পেমেন্ট ID: <b><span id="success-pid">-</span></b><br>
+					সেবা: আলতা সেবা (₹21)
+				</div>
+				<button id="success-ok-btn" onclick="closeSuccessModal()">ঠিক আছে</button>
+			</div>
+		</div>
+
+	<script>
+			function showSuccessPopup(formData, paymentId){
+			var lang = document.getElementById('langSelect')? document.getElementById('langSelect').value : 'bn';
+			var titles = {bn:"জয় মা তারা!", hi:"जय माँ तारा!", en:"Jai Maa Tara!"};
+			var descs = {
+				bn:"আপনার আলতা সেবা সফলভাবে গৃহীত হয়েছে। পুজো সম্পন্ন হলে হোয়াটসঅ্যাপে জানিয়ে দেওয়া হবে।",
+				hi:"आपकी अलता सेवा सफलतापूर्वक स्वीकार हो गई है।",
+				en:"Your Alta Seva has been received successfully. You will be notified on WhatsApp after puja."
+				};
+			document.getElementById('success-title').textContent = titles[lang] || titles.bn;
+			document.getElementById('success-desc').textContent = descs[lang] || descs.bn;
+			document.getElementById('success-name').textContent = formData.name || "-";
+			document.getElementById('success-pid').textContent = paymentId || "-";
+			document.getElementById('success-modal').style.display = 'flex';
+			document.body.style.overflow = 'hidden';
+			}
+			function closeSuccessModal(){
+			document.getElementById('success-modal').style.display = 'none';
+			document.body.style.overflow = 'auto';
+			}
+	</script>
+		
 </body>
 </html>
