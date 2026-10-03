@@ -71,13 +71,12 @@
                 <h3 class="text-xl font-bold text-slate-800" data-lang-key="altaTitle">আলতা সেবা</h3>
                 <span class="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full" data-lang-key="selectedBadge">নির্বাচিত</span>
             </div>
-            <p id="pujaPrice" class="text-amber-600 font-bold mt-1 text-lg">মূল্য: ₹21</p>
+            <p id="pujaPrice" class="text-amber-600 font-bold mt-1 text-lg">মূল্য: ₹1</p>
             <p class="text-sm text-slate-600 mt-2" data-lang-key="altaDesc"></p>
             <div id="pujaDetails" class="mt-4">
                 <div class="prose prose-sm max-w-none text-slate-700">
                     <h3 id="pujaTitle" class="text-lg font-semibold"></h3>
-                    <div id="pujaInclusions" class="mt-2 text-sm bg-amber-50 p-4 rounded-md border"></div>
-                    <div id="pujaCourier" class="mt-2 text-sm bg-white p-3 rounded-md border"></div>
+                    <div id="pujaInclusions" class="mt-2 text-sm bg-amber-50 p-4 rounded-md border"></div>                    
                 </div>
             </div>
         </section>
@@ -197,14 +196,14 @@
 
     <script>
         const FIXED_PUJA_KEY = 'altaSeva';
-        const pujaPrices = { altaSeva: 21 };
+        const pujaPrices = { altaSeva: 1 };
 
         const translations = {
             bn: {
                 pageTitle: "তাঁরা সেবা - আলতা সেবা",
                 headerTitle: "তাঁরা সেবা",
                 headerSubtitle: "পুজো - Call / Wapp- 7001531377",
-                welcomeMessage: "স্বাগতম! মা তারার শ্রীচরণে আলতা সেবা নিবেদনের জন্য নিচের ফর্মটি পূরণ করুন। এই সেবাটি আপনার নাম ও গোত্র সংকল্প করে সম্পন্ন করা হবে। মনে রাখবেন, এই বিশেষ সেবার জন্য কোনো প্রসাদ বা বক্স বাড়িতে কুরিয়ার করা হবে না।",
+                welcomeMessage: "স্বাগতম! মা তারার শ্রীচরণে আলতা সেবা নিবেদনের জন্য নিচে নাম ও গোত্র পূরণ করুন। এই সেবাটি আপনার নাম ও গোত্র সংকল্প করে সম্পন্ন করা হবে। ",
                 altaTitle: "আলতা সেবা",
                 altaDesc: "মা তারার শ্রীচরণে আপনার নাম ও গোত্রে আলতা নিবেদন করা হবে। সংসারে সুখ, শান্তি, সৌভাগ্য ও মনোকামনা পূরণের জন্য এই সেবা অত্যন্ত শুভ ফলদায়ক।",
                 selectedBadge: "নির্বাচিত",
@@ -232,16 +231,16 @@
                 footerText: "© 2025 তাঁরা সেৱা - তারাপীঠ - Call / Wapp- 7001531377", alertTitle: "সতর্কবার্তা", confirmTitle: "নিশ্চিত করুন", okBtnText: "হ্যাঁ", cancelBtnText: "না",
                 pujaDetailsContent: {
                     altaSeva: {
-                        title: "আলতা সেবা",
-                        inclusions: `<p>মা তারার এই বিশেষ আলতা সেবায় আপনার নাম, গোত্র ও মনোকামনা অনুসারে মায়ের শ্রীচরণে আলতা নিবেদন করা হবে। একাধিক ব্রাহ্মণ দ্বারা মন্ত্র পাঠ করা হবে।</p><strong>সেবার উপকরণ:</strong><ul><li>১) আপনার নাম ও গোত্র সংকল্প</li><li>২) বিশুদ্ধ আলতা, সিঁদুর, ফুল</li><li>৩) মন্ত্র পাঠ ও প্রার্থনা</li></ul>`,
-                        courier: `<strong>গুরুত্বপূর্ণ নোট:</strong><p>এই আলতা সেবার জন্য বাড়িতে কোনো প্রসাদ, ফুল বা বক্স কুরিয়ার করা হবে না। পুজো সম্পন্ন হওয়ার পর হোয়াটসঅ্যাপে আপনাকে জানিয়ে দেওয়া হবে।</p>`
+                        title: "সেবার উপকরণ:",
+                        inclusions: `<p>মা তারার এই বিশেষ আলতা সেবায় আপনার নাম, গোত্র ও মনোকামনা অনুসারে মায়ের শ্রীচরণে আলতা নিবেদন করা হবে। একাধিক ব্রাহ্মণ দ্বারা মন্ত্র পাঠ করা হবে।</p><ul><li>১) আপনার নাম ও গোত্র সংকল্প</li><li>২) বিশুদ্ধ আলতা, সিঁদুর, ফুল</li><li>৩) মন্ত্র পাঠ ও প্রার্থনা</li></ul>`,
+                        
                     }
                 }
             },
             hi: {
                 pageTitle: "तारा सेवा - अलता सेवा",
                 headerTitle: "तारा सेवा", headerSubtitle: "पूजा - Call / Wapp- 7001531377",
-                welcomeMessage: "स्वागत है! माँ तारा के चरणों में अलता सेवा के लिए नीचे दिया गया फॉर्म भरें। यह सेवा आपके नाम और गोत्र से संकल्प लेकर की जाएगी। इस सेवा के लिए कोई प्रसाद कूरियर नहीं किया जाएगा।",
+                welcomeMessage: "स्वागत है! माँ तारा के चरणों में अलता सेवा के लिए नीचे नाम और गोत्र भरें। यह सेवा आपके नाम और गोत्र से संकल्प लेकर की जाएगी।",
                 altaTitle: "अलता सेवा", altaDesc: "माँ तारा के श्रीचरणों में आपके नाम और गोत्र से अलता अर्पित की जाएगी। सुख, शांति और सौभाग्य के लिए यह अत्यंत शुभ है।",
                 selectedBadge: "चयनित", pujaPriceText: "मूल्य:", membersSectionTitle: "अपने नाम और गोत्र लिखें",
                 membersSectionSubtitle: "आप 5 लोगों तक के नाम और गोत्र लिख सकते हैं (कम से कम एक आवश्यक)",
@@ -257,12 +256,12 @@
                 paymentPopupLoading: "Razorpay पॉप-अप लोड हो रहा है...", googleSheetError: "तकनीकी खराबी के कारण पेमेंट ठीक से प्रोसेस नहीं हो पाया।", unknownError: "भुगतान में त्रुटि हुई।",
                 validationMinMembers: "कृपया कम से कम एक नाम और गोत्र लिखें।", validationFullName: "कृपया अपना पूरा नाम दें।",
                 footerText: "© 2025 Tara Seva - Tarapith", alertTitle: "चेतावनी", confirmTitle: "पुष्टि करें", okBtnText: "हाँ", cancelBtnText: "नहीं",
-                pujaDetailsContent: { altaSeva: { title: "अलता सेवा", inclusions: `<p>माँ तारा के चरणों में आपके नाम गोत्र से अलता अर्पित की जाएगी। ब्राह्मणों द्वारा मंत्र पाठ होगा।</p><strong>सामग्री:</strong><ul><li>आपका नाम गोत्र</li><li>शुद्ध अलता, सिंदूर, फूल</li></ul>`, courier: `<strong>नोट:</strong><p>इस सेवा के लिए कोई प्रसाद कूरियर नहीं होगा।</p>` } }
+                pujaDetailsContent: { altaSeva: { title: "सामग्री:", inclusions: `<p>माँ तारा के चरणों में आपके नाम गोत्र से अलता अर्पित की जाएगी। ब्राह्मणों द्वारा मंत्र पाठ होगा।</p><ul><li>आपका नाम गोत्र</li><li>शुद्ध अलता, सिंदूर, फूल</li></ul>`, } }
             },
             en: {
                 pageTitle: "Tara Seva - Alta Seva",
                 headerTitle: "Tara Seva", headerSubtitle: "For Puja - Call / Wapp- 7001531377",
-                welcomeMessage: "Welcome! Fill the form below for Alta Seva at Maa Tara's feet. This seva will be performed with your name and gotra Sankalpa. Please note, there will be NO courier delivery for this seva.",
+                welcomeMessage: "Welcome! Fill the Names & Gotras below for Alta Seva at Maa Tara's feet. This seva will be performed with your name and gotra Sankalpa.",
                 altaTitle: "Alta Seva", altaDesc: "Alta will be offered at the holy feet of Maa Tara in your name and gotra. Highly auspicious for happiness, peace and good fortune.",
                 selectedBadge: "Selected", pujaPriceText: "Price:", membersSectionTitle: "Enter Names & Gotras",
                 membersSectionSubtitle: "You can enter up to 5 names (at least one required)",
@@ -278,7 +277,7 @@
                 paymentPopupLoading: "Razorpay popup loading...", googleSheetError: "Payment failed due to technical issue.", unknownError: "Payment error.",
                 validationMinMembers: "Please enter at least one name and gotra.", validationFullName: "Please provide your full name.",
                 footerText: "© 2025 Tara Seva - Tarapith", alertTitle: "Attention", confirmTitle: "Confirm", okBtnText: "OK", cancelBtnText: "Cancel",
-                pujaDetailsContent: { altaSeva: { title: "Alta Seva", inclusions: `<p>Alta will be offered at Maa Tara's feet with your name and gotra Sankalpa and mantra chanting by Brahmins.</p><strong>Materials:</strong><ul><li>Your Name & Gotra</li><li>Pure Alta, Sindoor, Flowers</li></ul>`, courier: `<strong>Note:</strong><p>No Prasad or box will be couriered for this seva. You will be notified on WhatsApp after completion.</p>` } }
+                pujaDetailsContent: { altaSeva: { title: "Materials", inclusions: `<p>Alta will be offered at Maa Tara's feet with your name and gotra Sankalpa and mantra chanting by Brahmins.</p><ul><li>Your Name & Gotra</li><li>Pure Alta, Sindoor, Flowers</li></ul>`, } }
             }
         };
 
@@ -291,7 +290,6 @@
         const pujaTitleElem = document.getElementById('pujaTitle');
         const pujaPriceElem = document.getElementById('pujaPrice');
         const pujaInclusions = document.getElementById('pujaInclusions');
-        const pujaCourier = document.getElementById('pujaCourier');
         const membersSection = document.getElementById('membersSection');
         const membersContainer = document.getElementById('membersContainer');
         const addMemberBtn = document.getElementById('addMemberBtn');
@@ -357,8 +355,7 @@
                 pujaTitleElem.innerHTML = pujaData.title;
                 pujaPriceElem.innerHTML = `${translations[lang].pujaPriceText} ₹${pujaPrices[FIXED_PUJA_KEY]}`;
                 pujaInclusions.innerHTML = pujaData.inclusions;
-                pujaCourier.innerHTML = pujaData.courier;
-            }
+                }
             for (let i = 1; i <= 5; i++) {
                 const nameInput = document.getElementById(`member_name_${i}`);
                 const gotraInput = document.getElementById(`member_gotra_${i}`);
@@ -537,7 +534,7 @@
             terms: `<h3>Terms & Conditions</h3><p>Welcome to Tara Seva.</p><p>Tara Seva provides online booking for Alta Seva at Tarapith.</p><p>By using this website and making payment, you agree to these Terms.</p>`,
             privacy: `<h3>Privacy Policy</h3><p>We collect your name, phone, WhatsApp and puja info only for providing religious services.</p><p>Payments are securely processed through Razorpay.</p>`,
             refund: `<h3>Refund & Cancellation Policy</h3><p>Once Alta Seva is performed, refund is not applicable. If payment deducted multiple times, amount will be refunded after verification.</p>`,
-            shipping: `<h3>Shipping & Delivery Policy</h3><p>For Alta Seva (₹21), no Prasad or box will be couriered. You will be notified on WhatsApp after completion.</p>`
+            shipping: `<h3>Shipping & Delivery Policy</h3><p>For Alta Seva , no Prasad or box will be couriered. You will be notified on WhatsApp after completion.</p>`
         };
         function openPolicy(type){
             document.getElementById("policyTitle").innerText={terms:"Terms & Conditions",privacy:"Privacy Policy",refund:"Refund & Cancellation Policy",shipping:"Shipping & Delivery Policy"}[type];
