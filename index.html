@@ -8,7 +8,7 @@
        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1712646426058496'); fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1712646426058496&ev=PageView&noscript=1"/></noscript>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
@@ -501,6 +501,7 @@
         notes: { puja: formData.pujaTitle, name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp },
         theme: { color: "#c2410c" },
         handler: async function (response) {
+		if (typeof fbq !== 'undefined') { fbq('track', 'Purchase', {value: formData.amountINR, currency: 'INR'}); }
 			const payload = { status: "success", puja: formData.pujaTitle, amount: formData.amountINR, payment_id: response.razorpay_payment_id || "", razorpay_signature: response.razorpay_signature || "", members: JSON.stringify(formData.members), name: formData.name, contact: "+91" + formData.contact, email: formData.email || "N/A", address: formData.address, whatsapp: "+91" + formData.whatsapp, timestamp: new Date().toISOString() };
 			await postToGoogleSheet(payload);
 			resetPayBtn();
