@@ -20,7 +20,40 @@
         /* Slider Dots */
        .slider-dot{width:8px;height:8px;border-radius:9999px;background:#e7e5e4;transition:all 0.3s;}
        .slider-dot.active{background:#d97706;width:20px;}
-    </style>
+		.trust-strip{
+			display:flex;
+			flex-wrap:wrap;
+			justify-content:center;
+			gap:10px;
+			margin:14px 10px;
+					}
+			.trust-item{
+			display:flex;
+			align-items:center;
+			gap:5px;
+			background:#fff;
+			border:1px solid #e0e0e0;
+			border-radius:20px;
+			padding:6px 12px;
+			font-size:13px;
+			font-weight:500;
+			color:#444;
+			box-shadow:0 1px 3px rgba(0,0,0,0.05);
+			white-space:nowrap;
+				}
+				/* মোবাইলে 2টো করে দেখাবে */
+			@media (max-width:640px){
+			.trust-strip{
+				display:grid;
+				grid-template-columns:1fr 1fr;
+							}
+			.trust-item{
+					justify-content:center;
+			font-size:12px;
+			padding:7px 8px;
+				}
+				}
+	</style>
 </head>
 <body class="bg-gradient-to-b from-amber-50 to-white min-h-screen text-slate-800">
     <div class="max-w-3xl mx-auto p-6">
@@ -60,7 +93,25 @@
             </div>
             <div id="sliderDots" class="flex justify-center gap-2 mt-3"></div>
         </section>
-
+			<!-- Trust Badges Strip -->
+		<div class="trust-strip">
+			<div class="trust-item">
+				<span>😊</span>
+				<span data-lang-key="badge_happy">3k+ খুশি ভক্ত</span>
+			</div>
+			<div class="trust-item">
+				<span>🔒</span>
+					<span data-lang-key="badge_secure">100% সুরক্ষিত পেমেন্ট</span>
+			</div>
+			<div class="trust-item">
+					<span>⭐</span>
+					<span data-lang-key="badge_rating">4.9/5 গড় রেটিং</span>
+			</div>
+			<div class="trust-item">
+				<span>🙏</span>
+				<span data-lang-key="badge_puja">3k+ পূজা সম্পন্ন</span>
+			</div>
+		</div>
         <section class="bg-white rounded-2xl shadow p-5 mb-4">
             <p class="text-sm text-slate-600" data-lang-key="welcomeMessage"></p>
         </section>
@@ -208,7 +259,11 @@
                 pageTitle: "দেবী মা আলতা সেবা",
                 headerTitle: "তাঁরা সেবা",
                 headerSubtitle: "পুজো - Call / Wapp- 7001531377",
-                welcomeMessage: "পিতৃপক্ষ শেষে মাতৃপক্ষের সূচনা, বছর পর মা আসছেন বাপের বাড়ি। মহালয়ার এই ভোরে মনটা কেমন করে ওঠে না? ঘরের মেয়েকে আমরা কত আদরে সাজাই। আর জগৎ জননী মা যখন দুর্গা রূপে মর্ত্যে আসছেন, তাঁকে কি খালি হাতে আহ্বান করবো ? বড় আয়োজন নয়, সাধ্যমতো একটু শৃঙ্গারেই প্রসন্ন হন মা একটু আলতায় রাঙিয়ে দিন মায়ের শ্রীচরণ, এটাই সন্তানের সবচেয়ে বড় ভালোবাসা, মায়ের মন পেতে সোনাদানা লাগে না, লাগে ভক্তি। সামান্য আলতায় জানান ভালোবাসা।",
+                badge_happy: "3k+ খুশি ভক্ত",
+				badge_secure: "100% সুরক্ষিত পেমেন্ট",
+				badge_rating: "4.9/5 গড় রেটিং",
+				badge_puja: "3k+ পূজা সম্পন্ন",
+				welcomeMessage: "পিতৃপক্ষ শেষে মাতৃপক্ষের সূচনা, বছর পর মা আসছেন বাপের বাড়ি। মহালয়ার এই ভোরে মনটা কেমন করে ওঠে না? ঘরের মেয়েকে আমরা কত আদরে সাজাই। আর জগৎ জননী মা যখন দুর্গা রূপে মর্ত্যে আসছেন, তাঁকে কি খালি হাতে আহ্বান করবো ? বড় আয়োজন নয়, সাধ্যমতো একটু শৃঙ্গারেই প্রসন্ন হন মা একটু আলতায় রাঙিয়ে দিন মায়ের শ্রীচরণ, এটাই সন্তানের সবচেয়ে বড় ভালোবাসা, মায়ের মন পেতে সোনাদানা লাগে না, লাগে ভক্তি। সামান্য আলতায় জানান ভালোবাসা।",
                 altaTitle: "আলতা সেবা",
                 altaDesc: "তারাপীঠ মহাপীঠে মা তারা দেবী দূর্গা রূপে পূজিত হবেন , আমরা আপনার নামে সংকল্প করে মায়ের চরণে আলতা নিবেদন করবো  সংসারের সুখ শান্তি ও মনোকামনা পূরণে মাতৃপক্ষের এই শুভ সূচনাই প্রাপ্তি করুন আপনার আশীর্বাদ। সৌভাগ্য আনতে ও মনোকামনা পূরণের জন্য এই সেবা অত্যন্ত শুভ ফলদায়ক।",
                 selectedBadge: "নির্বাচিত",
@@ -246,6 +301,10 @@
             hi: {
                 pageTitle: "देवी माँ अलता सेवा",
                 headerTitle: "तारा सेवा", headerSubtitle: "पूजा - Call / Wapp- 7001531377",
+				badge_happy: "3k+ खुश भक्त",
+				badge_secure: "100% सुरक्षित पेमेंट",
+				badge_rating: "4.9/5 औसत रेटिंग",
+				badge_puja: "3k+ पूजा संपन्न",
                 welcomeMessage: "जैसे ही *पितृपक्ष* खत्म होता है और *मातृपक्ष* शुरू होता है, माँ एक साल बाद अपने मायके लौटती हैं—महालय की इस सुबह पर भला किसका दिल भावनाओं से न भर उठेगा? हम घर की बेटी को कितने प्यार और जतन से सजाते-संवारते हैं; तो जब जगत-जननी माँ, देवी दुर्गा के रूप में धरती पर आती हैं, तो क्या हम उनका स्वागत खाली हाथ करेंगे? इसके लिए किसी भव्य तैयारी की ज़रूरत नहीं है; माँ तो अपनी सामर्थ्य के अनुसार की गई साधारण सजावट से ही प्रसन्न हो जाती हैं। उनके पवित्र चरणों को *अल्ता* से सजाना—यह एक बच्चे के प्यार का सबसे बड़ा इज़हार है। माँ का दिल जीतने के लिए सोने या गहनों की ज़रूरत नहीं होती; बस सच्ची श्रद्धा ही मायने रखती है। बस *अल्ता* के एक स्पर्श से अपना प्यार ज़ाहिर करें।",
                 altaTitle: "अलता सेवा", altaDesc: "तारापीठ के पवित्र मंदिर में, माँ तारा देवी की पूजा देवी दुर्गा के रूप में की जाएगी। हम आपकी ओर से माँ के चरणों में 'अल्ता' (लाल रंग) अर्पित करेंगे और साथ ही आपके घर में सुख-शांति और आपकी दिल की इच्छाओं के पूरा होने का संकल्प लेंगे; 'मातृपक्ष' की इस शुभ शुरुआत में आपको उनका आशीर्वाद प्राप्त हो। यह सेवा सौभाग्य लाने और आपकी इच्छाओं को पूरा करने के लिए अत्यंत शुभ है।",
                 selectedBadge: "चयनित", pujaPriceText: "मूल्य:", whatsapp_confirmation: "बुकिंग पूरी होते ही <b>WhatsApp पर कन्फर्मेशन</b> भेजा जाएगा", membersSectionTitle: "अपने नाम और गोत्र लिखें",
@@ -267,7 +326,11 @@
             en: {
                 pageTitle: "Devi Maa Alta Seva",
                 headerTitle: "Tara Seva", headerSubtitle: "For Puja - Call / Wapp- 7001531377",
-                welcomeMessage: "As *Pitripaksha* draws to a close and *Matripaksha* begins, the Mother returns to her parental home after a year—how could one’s heart not stir with emotion at this dawn of Mahalaya? We adorn the daughter of the house with such tender care; and when the Universal Mother descends to earth as Goddess Durga, shall we welcome Her empty-handed? It does not require grand preparations; the Mother is pleased by simple adornment within one’s means. To tint Her sacred feet with *alta*—that is a child’s greatest expression of love. One does not need gold or jewels to win the Mother’s heart; devotion is all that matters. Express your love with just a touch of *alta*.",
+                badge_happy: "3k+ Happy Devotees",
+				badge_secure: "100% Secure Payment",
+				badge_rating: "4.9/5 Average Rating",
+				badge_puja: "3k+ Puja Completed",
+				welcomeMessage: "As *Pitripaksha* draws to a close and *Matripaksha* begins, the Mother returns to her parental home after a year—how could one’s heart not stir with emotion at this dawn of Mahalaya? We adorn the daughter of the house with such tender care; and when the Universal Mother descends to earth as Goddess Durga, shall we welcome Her empty-handed? It does not require grand preparations; the Mother is pleased by simple adornment within one’s means. To tint Her sacred feet with *alta*—that is a child’s greatest expression of love. One does not need gold or jewels to win the Mother’s heart; devotion is all that matters. Express your love with just a touch of *alta*.",
                 altaTitle: "Alta Seva", altaDesc: "At the sacred shrine of Tarapith, Mother Tara Devi will be worshipped in the form of Goddess Durga. We will offer *Alta* (red dye) at the Mother's feet on your behalf, with a solemn resolve (*Sankalpa*) for domestic happiness, peace, and the fulfillment of your heartfelt wishes; may you receive Her blessings during this auspicious beginning of *Matripaksha*. This service is highly auspicious for bringing good fortune and fulfilling your desires.",
                 selectedBadge: "Selected", pujaPriceText: "Price:", whatsapp_confirmation: "You will receive a <b>WhatsApp confirmation</b> once booking is complete", membersSectionTitle: "Enter Names & Gotras",
                 membersSectionSubtitle: "You can enter up to 5 names (at least one required)",
