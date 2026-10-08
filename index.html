@@ -53,6 +53,26 @@
 			padding:7px 8px;
 				}
 				}
+			.feature-strip{
+		display:grid;
+		grid-template-columns:repeat(4,1fr);
+		gap:10px;
+		margin:18px 0;
+		}
+		.feature-card{
+		background:#fff;
+		border:1px solid #f3e8d3;
+		border-radius:12px;
+		padding:12px 8px;
+		text-align:center;
+		box-shadow:0 2px 6px rgba(0,0,0,0.04);
+		}
+		.feature-icon{ font-size:22px; margin-bottom:4px; }
+		.feature-title{ font-size:12px; font-weight:700; color:#1f2937; line-height:1.3; }
+		.feature-sub{ font-size:11px; color:#6b7280; margin-top:2px; line-height:1.2; }
+		@media (max-width:640px){
+		.feature-strip{ grid-template-columns:1fr 1fr; }
+		}
 	</style>
 </head>
 <body class="bg-gradient-to-b from-amber-50 to-white min-h-screen text-slate-800">
@@ -210,6 +230,29 @@
                 <button id="payBtn" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-md" data-lang-key="payButton">পেমেন্ট করুন ও পুজো পাঠানোর প্রক্রিয়া সম্পূর্ণ করুন</button>
                 <p class="text-xs text-slate-500 mt-2">Secure & Verified Payment Gateway - Razorpay</p>
             </div>
+				<!-- Puja Features - Payment এর নিচে -->
+			<div class="feature-strip">
+				<div class="feature-card">
+					<div class="feature-icon">📸</div>
+					<div class="feature-title" data-lang-key="feature_proof_title">48 ঘণ্টার মধ্যে পূজা প্রমাণ</div>
+					<div class="feature-sub" data-lang-key="feature_proof_sub">WhatsApp এ ছবি পাবেন</div>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🎓</div>
+					<div class="feature-title" data-lang-key="feature_priest_title">যাচাইকৃত ও অভিজ্ঞ পুরোহিত</div>
+					<div class="feature-sub" data-lang-key="feature_priest_sub">বংশ পরম্পরা ও আগম প্রশিক্ষিত</div>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">📜</div>
+					<div class="feature-title" data-lang-key="feature_vedic_title">100% বৈদিক রীতি</div>
+					<div class="feature-sub" data-lang-key="feature_vedic_sub">শাস্ত্র মেনে সম্পূর্ণ সংকল্প</div>
+				</div>
+				<div class="feature-card">
+					<div class="feature-icon">🛕</div>
+					<div class="feature-title" data-lang-key="feature_temple_title">পবিত্র তারাপীঠ মন্দিরে</div>
+					<div class="feature-sub" data-lang-key="feature_temple_sub">মা তাঁরা মন্দিরেই পূজা</div>
+				</div>
+			</div>
         </div>
 
         <div id="messageArea" class="mb-4"></div>
@@ -281,6 +324,14 @@
                 namePlaceholder: "নাম", phonePlaceholder: "আপনার ফোন নম্বর লিখুন", emailPlaceholder: "আপনার ইমেইল", villTownPlaceholder: "গ্রাম/শহর", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "--", selectStatePlaceholder: "-- রাজ্য নির্বাচন করুন  --", pinCodePlaceholder: "আপনার  পিন লিখুন",
                 whatsappPlaceholder: "১০ অঙ্কের হোয়াটসঅ্যাপ নম্বর দিন",
                 paymentIntro: "সমস্ত তথ্য পূরণ করার পরে নিচে পেমেন্ট করে আলতা সেবা পুজো নিবেদন করুন।", payButton: "পেমেন্ট  করে পুজো নিবেদন সম্পূর্ণ করুন",
+				feature_proof_title: "48 ঘণ্টার মধ্যে পূজা প্রমাণ",
+						feature_proof_sub: "WhatsApp এ ছবি পাবেন",
+						feature_priest_title: "যাচাইকৃত ও অভিজ্ঞ পুরোহিত",
+						feature_priest_sub: "বংশ পরম্পরা ও আগম প্রশিক্ষিত",
+						feature_vedic_title: "100% বৈদিক রীতি",
+						feature_vedic_sub: "শাস্ত্র মেনে সম্পূর্ণ সংকল্প",
+						feature_temple_title: "পবিত্র তারাপীঠ মন্দিরে",
+						feature_temple_sub: "মা তাঁরা মন্দিরেই পূজা",
                 confirmMsg: (pujaTitle, amount) => `আপনি '${pujaTitle}' (₹${amount}) এর জন্য পেমেন্ট করতে যাচ্ছেন।`,
                 successMsg: "আপনার আলতা সেবা সফলভাবে গৃহীত হয়েছে। ",
                 paymentFailedMsg: "পেমেন্ট বাতিল বা ব্যর্থ হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।",
@@ -316,6 +367,14 @@
                 districtLabel: "जिला ", stateLabel: "राज्य ", pinCodeLabel: "पिन कोड ", whatsappLabel: "अपना व्हाट्सएप नंबर लिखें",
                 namePlaceholder: "नाम", phonePlaceholder: "--", emailPlaceholder: "--", villTownPlaceholder: "--", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "--", selectStatePlaceholder: "-- राज्य चुनें  --", pinCodePlaceholder: "--", whatsappPlaceholder: "10 अंकों का व्हाट्सएप नंबर दर्ज करें",
                 paymentIntro: "जानकारी भरने के बाद नीचे भुगतान करके अलता सेवा भेजें।", payButton: "भुगतान करें और सेवा पूरी करें",
+				feature_proof_title: "48 घंटे में पूजा प्रमाण",
+			feature_proof_sub: "WhatsApp पर फोटो मिलेगी",
+			feature_priest_title: "सत्यापित और अनुभवी पुरोहित",
+			feature_priest_sub: "वंश परंपरा और आगम प्रशिक्षित",
+			feature_vedic_title: "100% वैदिक विधि",
+			feature_vedic_sub: "शास्त्र अनुसार पूर्ण संकल्प",
+			feature_temple_title: "पवित्र तारापीठ मंदिर में",
+			feature_temple_sub: "माँ तारा मंदिर में ही पूजा",
                 confirmMsg: (pujaTitle, amount) => `आप '${pujaTitle}' (₹${amount}) के लिए भुगतान करने जा रहे हैं।`,
                 successMsg: "आपकी अलता सेवा सफलतापूर्वक प्राप्त हुई है।", paymentFailedMsg: "भुगतान रद्द या असफल हो गया।",
                 paymentPopupLoading: "Razorpay पॉप-अप लोड हो रहा है...", googleSheetError: "तकनीकी खराबी के कारण पेमेंट ठीक से प्रोसेस नहीं हो पाया।", unknownError: "भुगतान में त्रुटि हुई।",
@@ -328,7 +387,7 @@
                 headerTitle: "Tara Seva", headerSubtitle: "For Puja - Call / Wapp- 7001531377",
                 badge_happy: "3k+ Happy Devotees",
 				badge_secure: "100% Secure Payment",
-				badge_rating: "4.9/5 Average Rating",
+				badge_rating: "4.9/5 Rating",
 				badge_puja: "3k+ Puja Completed",
 				welcomeMessage: "As *Pitripaksha* draws to a close and *Matripaksha* begins, the Mother returns to her parental home after a year—how could one’s heart not stir with emotion at this dawn of Mahalaya? We adorn the daughter of the house with such tender care; and when the Universal Mother descends to earth as Goddess Durga, shall we welcome Her empty-handed? It does not require grand preparations; the Mother is pleased by simple adornment within one’s means. To tint Her sacred feet with *alta*—that is a child’s greatest expression of love. One does not need gold or jewels to win the Mother’s heart; devotion is all that matters. Express your love with just a touch of *alta*.",
                 altaTitle: "Alta Seva", altaDesc: "At the sacred shrine of Tarapith, Mother Tara Devi will be worshipped in the form of Goddess Durga. We will offer *Alta* (red dye) at the Mother's feet on your behalf, with a solemn resolve (*Sankalpa*) for domestic happiness, peace, and the fulfillment of your heartfelt wishes; may you receive Her blessings during this auspicious beginning of *Matripaksha*. This service is highly auspicious for bringing good fortune and fulfilling your desires.",
@@ -341,6 +400,14 @@
                 districtLabel: "District ", stateLabel: "State ", pinCodeLabel: "Pin Code ", whatsappLabel: "Enter Your WhatsApp Number",
                 namePlaceholder: "Name", phonePlaceholder: "", emailPlaceholder: "--", villTownPlaceholder: "--", roadLanePlaceholder: "--", landmarkPlaceholder: "--", districtPlaceholder: "-", selectStatePlaceholder: "-- Select State (--) --", pinCodePlaceholder: "--", whatsappPlaceholder: "Enter 10-digit WhatsApp number",
                 paymentIntro: "After filling details, make payment below for Alta Seva puja nivedan.", payButton: "Pay & Complete Puja Nivedan",
+				feature_proof_title: "Puja Proof in 48 Hours",
+			feature_proof_sub: "Get photos on WhatsApp",
+			feature_priest_title: "Verified & Experienced Priests",
+			feature_priest_sub: "Lineage & Agama Trained",
+			feature_vedic_title: "100% Vedic Rituals",
+			feature_vedic_sub: "Complete Sankalpa as per Shastra",
+			feature_temple_title: "At Sacred Tarapith Temple",
+			feature_temple_sub: "Puja at Maa Tara Temple itself",
                 confirmMsg: (pujaTitle, amount) => `You are about to pay ₹${amount} for '${pujaTitle}'.`,
                 successMsg: "Your Alta Seva has been received successfully.", paymentFailedMsg: "Payment cancelled or failed.",
                 paymentPopupLoading: "Razorpay popup loading...", googleSheetError: "Payment failed due to technical issue.", unknownError: "Payment error.",
